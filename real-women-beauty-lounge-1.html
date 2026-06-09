@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real Women Beauty Lounge – Quito, Ecuador</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Design Tokens ──────────────────────────────────────── */
+    :root {
+      --cream:   #FAF7F4;
+      --gold:    #C9A96E;
+      --blush:   #E8C4B8;
+      --soft-black: #2C2C2C;
+      --gold-light: #dfc08e;
+      --blush-light: #f2ddd6;
+      --text-muted: #6b6461;
+      --radius-card: 18px;
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── Reset ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--soft-black);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1,h2,h3,h4,h5 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.15;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── Utilities ───────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .gold-line {
+      display: block;
+      width: 56px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .eyebrow {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ─── Navbar ──────────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(250, 247, 244, 0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(201,169,110,0.15), 0 4px 24px rgba(44,44,44,0.06);
+      padding: 14px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--soft-black);
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--soft-black);
+      position: relative;
+      padding-bottom: 3px;
+      transition: color var(--transition);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 11px 26px;
+      border-radius: 60px;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .nav-cta:hover { background: var(--soft-black); transform: translateY(-1px); }
+
+    /* Mobile hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--soft-black);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ─── Hero — Split Layout ─────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 64px 80px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--cream);
+      z-index: -1;
+    }
+
+    .hero-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-kicker::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-headline {
+      font-size: clamp(44px, 5.5vw, 74px);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--soft-black);
+      margin-bottom: 28px;
+      line-height: 1.08;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 400px;
+      margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--soft-black);
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 38px;
+      border-radius: 60px;
+      border: 2px solid var(--soft-black);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+    .btn-primary:hover { background: transparent; color: var(--soft-black); transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: var(--soft-black);
+      font-family: 'Raleway', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 38px;
+      border-radius: 60px;
+      border: 2px solid var(--blush);
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+    .btn-ghost:hover { border-color: var(--gold); background: var(--blush-light); transform: translateY(-2px); }
+
+    .hero-stat-row {
+      display: flex;
+      gap: 40px;
+      margin-top: 48px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(201,169,110,0.2);
+    }
+
+    .hero-stat { }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      margin-top: 2px;
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 8s ease;
+    }
+
+    .hero-right:hover img { transform: scale(1.04); }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 48px;
+      left: -28px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px 22px;
+      box-shadow: 0 8px 40px rgba(44,44,44,0.12);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      z-index: 2;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero-badge-icon {
+      width: 44px; height: 44px;
+      background: var(--blush-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .hero-badge-text { }
+    .hero-badge-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--soft-black);
+    }
+    .hero-badge-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ─── About ───────────────────────────────────────────────── */
+    #about {
+      padding: 120px 0;
+      overflow: hidden;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .about-img-wrap:hover img { transform: scale(1.04); }
+
+    .about-img-accent {
+      position: absolute;
+      top: -24px; right: -24px;
+      width: 180px; height: 180px;
+      border: 2px solid var(--gold);
+      border-radius: var(--radius-card);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .about-tag {
+      position: absolute;
+      top: 32px; right: -20px;
+      background: var(--gold);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 60px;
+    }
+
+    .about-content { }
+
+    .about-content h2 {
+      font-size: clamp(32px, 3.2vw, 48px);
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .about-content h2 em { font-style: italic; color: var(--gold); }
+
+    .about-body {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .about-value {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .about-value-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .about-value p {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--soft-black);
+      letter-spacing: 0.02em;
+    }
+    .about-value span {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ─── Services ────────────────────────────────────────────── */
+    #services {
+      padding: 120px 0;
+      background: var(--soft-black);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .services-header h2 {
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .services-header h2 em { font-style: italic; color: var(--gold); }
+
+    .services-header p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Flip card grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      height: 340px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .service-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: var(--radius-card);
+    }
+
+    .service-card:hover .service-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .service-front, .service-back {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-card);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .service-front {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,169,110,0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      text-align: center;
+      padding: 32px 28px;
+      transition: border-color 0.3s;
+    }
+
+    .service-card:hover .service-front {
+      border-color: rgba(201,169,110,0.5);
+    }
+
+    .service-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(201,169,110,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      transition: background 0.3s;
+    }
+
+    .service-front h3 {
+      font-size: 20px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+
+    .service-front .service-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .service-front .service-hint {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      margin-top: -8px;
+    }
+
+    .service-back {
+      background: var(--gold);
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-align: center;
+      padding: 32px 28px;
+    }
+
+    .service-back h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .service-back p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+    }
+
+    .service-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .service-price span {
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
+    /* ─── Gallery — Masonry ───────────────────────────────────── */
+    #gallery {
+      padding: 120px 0;
+    }
+
+    .gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      gap: 24px;
+    }
+
+    .gallery-header h2 {
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 500;
+    }
+    .gallery-header h2 em { font-style: italic; color: var(--gold); }
+
+    .gallery-header p {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 300px;
+      text-align: right;
+    }
+
+    .masonry-grid {
+      columns: 3;
+      column-gap: 20px;
+    }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 20px;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .masonry-item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .masonry-item:hover img { transform: scale(1.05); }
+
+    .masonry-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(44,44,44,0.6) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+
+    .masonry-item:hover .masonry-overlay { opacity: 1; }
+
+    .masonry-overlay span {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    /* ─── Testimonials — Horizontal Scroll Carousel ───────────── */
+    #testimonials {
+      padding: 120px 0;
+      background: linear-gradient(135deg, var(--blush-light) 0%, var(--cream) 100%);
+      overflow: hidden;
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .testimonials-header h2 {
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .testimonials-header h2 em { font-style: italic; color: var(--gold); }
+
+    .testimonials-header p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .carousel-track-wrap {
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 16px 32px 32px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .carousel-track::-webkit-scrollbar { display: none; }
+    .carousel-track:active { cursor: grabbing; }
+
+    .testimonial-card {
+      scroll-snap-align: start;
+      flex: 0 0 360px;
+      background: #fff;
+      border-radius: var(--radius-card);
+      padding: 36px 32px;
+      box-shadow: 0 4px 32px rgba(44,44,44,0.07);
+      position: relative;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 48px rgba(44,44,44,0.12);
+    }
+
+    .testimonial-quote {
+      font-size: 48px;
+      line-height: 1;
+      color: var(--blush);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+
+    .testimonial-footer {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .testimonial-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--blush);
+    }
+
+    .testimonial-avatar-placeholder {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--blush-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      border: 2px solid var(--blush);
+      flex-shrink: 0;
+    }
+
+    .testimonial-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--soft-black);
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .testimonial-stars {
+      margin-left: auto;
+      display: flex;
+      gap: 2px;
+    }
+
+    .testimonial-stars span { color: var(--gold); font-size: 13px; }
+
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .carousel-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 2px solid rgba(201,169,110,0.35);
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--soft-black);
+      transition: all var(--transition);
+      font-size: 16px;
+    }
+
+    .carousel-btn:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
+
+    /* ─── Booking Form ────────────────────────────────────────── */
+    #booking {
+      padding: 120px 0;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .booking-info h2 {
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .booking-info h2 em { font-style: italic; color: var(--gold); }
+
+    .booking-info p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    .booking-perks {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .booking-perk {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .perk-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--blush-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .perk-text strong {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--soft-black);
+      display: block;
+    }
+
+    .perk-text span { font-size: 12px; color: var(--text-muted); }
+
+    .booking-form {
+      background: #fff;
+      border-radius: 24px;
+      padding: 48px 40px;
+      box-shadow: 0 8px 48px rgba(44,44,44,0.08);
+    }
+
+    .booking-form h3 {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid rgba(44,44,44,0.12);
+      border-radius: 12px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      color: var(--soft-black);
+      background: var(--cream);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,169,110,0.12);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 96px; }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .btn-whatsapp {
+      width: 100%;
+      background: #25D366;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 18px 32px;
+      border-radius: 60px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background var(--transition), transform var(--transition);
+      margin-top: 8px;
+    }
+    .btn-whatsapp:hover { background: #1aad52; transform: translateY(-2px); }
+
+    /* ─── Footer ──────────────────────────────────────────────── */
+    footer {
+      background: var(--soft-black);
+      color: rgba(255,255,255,0.7);
+      padding: 80px 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 64px;
+    }
+
+    .footer-brand .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .footer-brand .logo span { color: var(--gold); }
+
+    .footer-brand p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 24px;
+      max-width: 260px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 16px;
+      transition: background var(--transition), color var(--transition);
+      text-decoration: none;
+    }
+    .social-btn:hover { background: var(--gold); color: #fff; }
+
+    .footer-col h4 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: #fff; }
+
+    .footer-col address {
+      font-style: normal;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ─── Floating WhatsApp ───────────────────────────────────── */
+    #float-whatsapp {
+      position: fixed;
+      bottom: 90px;
+      right: 28px;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+      z-index: 900;
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+      font-size: 26px;
+    }
+
+    #float-whatsapp:hover {
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 8px 36px rgba(37,211,102,0.5);
+    }
+
+    /* ─── Floating Book Now ───────────────────────────────────── */
+    #float-book {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--gold);
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 60px;
+      box-shadow: 0 4px 24px rgba(201,169,110,0.45);
+      z-index: 900;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      text-decoration: none;
+    }
+
+    #float-book:hover {
+      background: var(--soft-black);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 36px rgba(44,44,44,0.25);
+    }
+
+    /* ─── Scroll Reveal ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Mobile nav drawer ────────────────────────────────────── */
+    .nav-drawer {
+      position: fixed;
+      inset: 0;
+      background: rgba(44,44,44,0.4);
+      z-index: 1100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .nav-drawer.open { opacity: 1; pointer-events: all; }
+
+    .nav-drawer-panel {
+      position: absolute;
+      top: 0; right: 0;
+      width: 280px;
+      height: 100%;
+      background: var(--cream);
+      padding: 32px 28px;
+      transform: translateX(100%);
+      transition: transform var(--transition);
+    }
+    .nav-drawer.open .nav-drawer-panel { transform: translateX(0); }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      color: var(--soft-black);
+      display: flex;
+      margin-left: auto;
+      margin-bottom: 32px;
+    }
+
+    .drawer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .drawer-links a {
+      font-size: 18px;
+      font-weight: 500;
+      font-family: 'Playfair Display', serif;
+      color: var(--soft-black);
+    }
+
+    /* ─── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero-left { padding: 120px 40px 60px 48px; }
+      .about-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 120px 20px 60px; text-align: center; }
+      .hero-kicker { justify-content: center; }
+      .hero-kicker::before { display: none; }
+      .hero-sub { margin: 0 auto 40px; }
+      .hero-actions { justify-content: center; }
+      .hero-stat-row { justify-content: center; }
+      .hero-badge { left: 50%; transform: translateX(-50%); bottom: 24px; }
+      .hero-right { height: 420px; display: block; }
+
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img-wrap { aspect-ratio: 3/2; }
+      .about-tag { right: 16px; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .masonry-grid { columns: 2; }
+
+      .booking-grid { grid-template-columns: 1fr; }
+
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 480px) {
+      .masonry-grid { columns: 1; }
+      .booking-form { padding: 32px 20px; }
+      .form-grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">Real Women <span>Beauty</span></a>
+
+    <ul class="nav-links">
+      <li><a href="#about">Nosotras</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#gallery">Galería</a></li>
+      <li><a href="#testimonials">Reseñas</a></li>
+    </ul>
+
+    <button class="nav-cta" onclick="scrollToBooking()">Reservar</button>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-panel">
+    <button class="drawer-close" id="drawerClose">✕</button>
+    <ul class="drawer-links">
+      <li><a href="#about" onclick="closeDrawer()">Nosotras</a></li>
+      <li><a href="#services" onclick="closeDrawer()">Servicios</a></li>
+      <li><a href="#gallery" onclick="closeDrawer()">Galería</a></li>
+      <li><a href="#testimonials" onclick="closeDrawer()">Reseñas</a></li>
+      <li><a href="#booking" onclick="closeDrawer()">Reservar</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO — SPLIT LAYOUT
+════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-left">
+    <span class="hero-kicker">Beauty Lounge · Batán Alto, Quito</span>
+
+    <h1 class="hero-headline">
+      Donde la belleza<br>
+      se vuelve <em>arte</em>
+    </h1>
+
+    <p class="hero-sub">
+      Experiencias de cuidado personal diseñadas para mujeres reales. Desde tratamientos capilares hasta rituales de spa, cada visita es un momento sólo para ti.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#booking" class="btn-primary">Reserva tu cita</a>
+      <a href="#services" class="btn-ghost">Ver servicios</a>
+    </div>
+
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="hero-stat-num">+11K</div>
+        <div class="hero-stat-label">Seguidoras en Instagram</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">+8</div>
+        <div class="hero-stat-label">Años de experiencia</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5★</div>
+        <div class="hero-stat-label">Calificación promedio</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img
+      src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&q=80"
+      alt="Salón de belleza Real Women Beauty Lounge"
+      loading="eager"
+    />
+    <div class="hero-badge">
+      <div class="hero-badge-icon">💆‍♀️</div>
+      <div class="hero-badge-text">
+        <div class="hero-badge-title">Experiencia premium</div>
+        <div class="hero-badge-sub">Agenda en minutos vía WhatsApp</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     ABOUT — ASYMMETRIC
+════════════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid reveal">
+      <div class="about-img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80"
+          alt="Equipo Real Women Beauty Lounge"
+        />
+        <div class="about-img-accent"></div>
+        <div class="about-tag">Est. 2016</div>
+      </div>
+
+      <div class="about-content">
+        <span class="eyebrow">Nuestra historia</span>
+        <div class="gold-line"></div>
+        <h2>Belleza <em>auténtica</em><br>para mujeres reales</h2>
+        <p class="about-body">
+          Real Women Beauty Lounge nació de la idea de que cada mujer merece sentirse extraordinaria, sin importar su edad, tipo de cabello o estilo de vida. Somos un espacio íntimo y profesional donde la calidad se fusiona con el calor humano.
+        </p>
+        <p class="about-body">
+          Nuestro equipo de estilistas certificadas se capacita continuamente con las últimas técnicas internacionales, usando productos de alta gama para garantizar resultados que duren y brillen.
+        </p>
+
+        <div class="about-values">
+          <div class="about-value">
+            <div class="about-value-dot"></div>
+            <div>
+              <p>Productos premium</p>
+              <span>Marcas internacionales certificadas</span>
+            </div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-dot"></div>
+            <div>
+              <p>Ambiente íntimo</p>
+              <span>Un espacio sólo para ti</span>
+            </div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-dot"></div>
+            <div>
+              <p>Equipo experto</p>
+              <span>Estilistas certificadas</span>
+            </div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-dot"></div>
+            <div>
+              <p>Horarios flexibles</p>
+              <span>De lunes a sábado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SERVICES — FLIP CARDS
+════════════════════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <span class="eyebrow" style="color: var(--gold-light)">Lo que ofrecemos</span>
+      <div class="gold-line" style="margin: 12px auto 20px"></div>
+      <h2>Nuestros <em>servicios</em></h2>
+      <p>Pasa el cursor sobre cada tarjeta para ver los detalles y precios</p>
+    </div>
+
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-front">
+            <div class="service-icon">✂️</div>
+            <div class="service-tag">Cabello</div>
+            <h3>Corte & Estilo</h3>
+            <div class="service-hint">Pasa el cursor ›</div>
+          </div>
+          <div class="service-back">
+            <h3>Corte & Estilo</h3>
+            <p>Corte personalizado según tu tipo de rostro y textura de cabello. Incluye lavado, tratamiento e hidratación express.</p>
+            <div class="service-price">desde $25 <span>/ sesión</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-front">
+            <div class="service-icon">🎨</div>
+            <div class="service-tag">Color</div>
+            <h3>Coloración</h3>
+            <div class="service-hint">Pasa el cursor ›</div>
+          </div>
+          <div class="service-back">
+            <h3>Coloración</h3>
+            <p>Tintes, mechas, balayage y coloraciones fantasía con fórmulas sin amoníaco que protegen tu cabello.</p>
+            <div class="service-price">desde $45 <span>/ sesión</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-front">
+            <div class="service-icon">💅</div>
+            <div class="service-tag">Uñas</div>
+            <h3>Manicure & Pedicure</h3>
+            <div class="service-hint">Pasa el cursor ›</div>
+          </div>
+          <div class="service-back">
+            <h3>Manicure & Pedicure</h3>
+            <p>Tratamiento completo con gel, acrílico o nail art. Incluye exfoliación, masaje y acabados de larga duración.</p>
+            <div class="service-price">desde $18 <span>/ sesión</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-front">
+            <div class="service-icon">🌿</div>
+            <div class="service-tag">Tratamiento</div>
+            <h3>Keratina & Botox Capilar</h3>
+            <div class="service-hint">Pasa el cursor ›</div>
+          </div>
+          <div class="service-back">
+            <h3>Keratina & Botox Capilar</h3>
+            <p>Alisado definitivo o regeneración profunda con botox capilar. Cabello liso, brillante y sin frizz por semanas.</p>
+            <div class="service-price">desde $80 <span>/ sesión</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-front">
+            <div class="service-icon">👁️</div>
+            <div class="service-tag">Maquillaje</div>
+            <h3>Maquillaje Profesional</h3>
+            <div class="service-hint">Pasa el cursor ›</div>
+          </div>
+          <div class="service-back">
+            <h3>Maquillaje Profesional</h3>
+            <p>Maquillaje para eventos, novias o sesiones fotográficas. Técnica airbrush disponible para mayor duración.</p>
+            <div class="service-price">desde $35 <span>/ sesión</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-front">
+            <div class="service-icon">🛁</div>
+            <div class="service-tag">Spa & Bienestar</div>
+            <h3>Rituales de Spa</h3>
+            <div class="service-hint">Pasa el cursor ›</div>
+          </div>
+          <div class="service-back">
+            <h3>Rituales de Spa</h3>
+            <p>Faciales hidratantes, aromaterapia, masajes capilares y rituales de relajación total para el cuerpo y la mente.</p>
+            <div class="service-price">desde $55 <span>/ sesión</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     GALLERY — MASONRY
+════════════════════════════════════════════ -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-header reveal">
+      <div>
+        <span class="eyebrow">Nuestro trabajo</span>
+        <div class="gold-line"></div>
+        <h2>La <em>galería</em></h2>
+      </div>
+      <p>Cada look es una obra de arte. Síguenos en Instagram para más inspiración.</p>
+    </div>
+
+    <div class="masonry-grid reveal">
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=500&q=80" alt="Peinado elegante" />
+        <div class="masonry-overlay"><span>Peinado de novia</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=500&q=80" alt="Color cabello" />
+        <div class="masonry-overlay"><span>Balayage caramel</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=500&q=80" alt="Maquillaje" />
+        <div class="masonry-overlay"><span>Maquillaje artístico</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80" alt="Manicure" />
+        <div class="masonry-overlay"><span>Nail art & gel</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1554519515-242161756769?w=500&q=80" alt="Tratamiento capilar" />
+        <div class="masonry-overlay"><span>Keratina premium</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=500&q=80" alt="Spa facial" />
+        <div class="masonry-overlay"><span>Ritual facial</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1571290274554-6a2eaa771e5f?w=500&q=80" alt="Corte moderno" />
+        <div class="masonry-overlay"><span>Bob estructurado</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?w=500&q=80" alt="Pedicure" />
+        <div class="masonry-overlay"><span>Pedicure de lujo</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1470259078422-826894b933aa?w=500&q=80" alt="Ondas" />
+        <div class="masonry-overlay"><span>Beach waves</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS — HORIZONTAL CAROUSEL
+════════════════════════════════════════════ -->
+<section id="testimonials">
+  <div class="testimonials-header reveal">
+    <span class="eyebrow">Lo que dicen</span>
+    <div class="gold-line" style="margin: 12px auto 20px"></div>
+    <h2>Mujeres que nos <em>inspiran</em></h2>
+    <p>Más de 15,000 clientas satisfechas en Ecuador y más allá</p>
+  </div>
+
+  <div class="carousel-track-wrap">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Llevaba años buscando un lugar que realmente entendiera mi cabello rizado. En Real Women me trataron como una reina y el resultado fue increíble. ¡Nunca más voy a ir a otro salón!</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar-placeholder">👩🏽</div>
+          <div>
+            <div class="testimonial-name">Valentina Torres</div>
+            <div class="testimonial-role">Quito, Ecuador</div>
+          </div>
+          <div class="testimonial-stars">
+            <span>★★★★★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Me hice el maquillaje para mi boda aquí y quedé absolutamente enamorada. El equipo es cálido, profesional y realmente sabe escucharte. Mis fotos de boda hablan por sí solas.</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar-placeholder">👩🏻</div>
+          <div>
+            <div class="testimonial-name">Camila Recalde</div>
+            <div class="testimonial-role">Quito, Ecuador</div>
+          </div>
+          <div class="testimonial-stars">
+            <span>★★★★★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">La keratina que me hicieron duró mucho más que en otros salones. El ambiente es súper relajante y el precio es muy justo. Definitivamente el mejor beauty lounge de Quito.</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar-placeholder">👩🏾</div>
+          <div>
+            <div class="testimonial-name">Alejandra Morales</div>
+            <div class="testimonial-role">Quito, Ecuador</div>
+          </div>
+          <div class="testimonial-stars">
+            <span>★★★★★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Vine por una manicure y salí sintiéndome completamente renovada. El ritual de spa es una experiencia que toda mujer debe vivir. Ya agendé mi cita del mes que viene.</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar-placeholder">👩🏼</div>
+          <div>
+            <div class="testimonial-name">Sofía Andrade</div>
+            <div class="testimonial-role">Quito, Ecuador</div>
+          </div>
+          <div class="testimonial-stars">
+            <span>★★★★★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">El balayage que me hicieron es exactamente lo que quería. Vine con una foto de Instagram y salí exactamente igual. La colorista tiene una habilidad increíble para interpretar tus deseos.</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar-placeholder">👩🏽‍🦱</div>
+          <div>
+            <div class="testimonial-name">Daniela Suárez</div>
+            <div class="testimonial-role">Ibarra, Ecuador</div>
+          </div>
+          <div class="testimonial-stars">
+            <span>★★★★★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-nav">
+    <button class="carousel-btn" id="prevBtn" aria-label="Anterior">‹</button>
+    <button class="carousel-btn" id="nextBtn" aria-label="Siguiente">›</button>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     BOOKING FORM
+════════════════════════════════════════════ -->
+<section id="booking">
+  <div class="container">
+    <div class="booking-grid">
+      <div class="booking-info reveal">
+        <span class="eyebrow">Reserva tu cita</span>
+        <div class="gold-line"></div>
+        <h2>Tu momento <em>empieza</em><br>aquí</h2>
+        <p>Reservar es fácil y rápido. Completa el formulario y una de nuestras estilistas te contactará en menos de 2 horas para confirmar tu cita.</p>
+
+        <div class="booking-perks">
+          <div class="booking-perk">
+            <div class="perk-icon">🕐</div>
+            <div class="perk-text">
+              <strong>Confirmación rápida</strong>
+              <span>Te respondemos en menos de 2 horas</span>
+            </div>
+          </div>
+          <div class="booking-perk">
+            <div class="perk-icon">📍</div>
+            <div class="perk-text">
+              <strong>Fácil de llegar</strong>
+              <span>Quito, Ecuador — estacionamiento disponible</span>
+            </div>
+          </div>
+          <div class="booking-perk">
+            <div class="perk-icon">💬</div>
+            <div class="perk-text">
+              <strong>Atención personalizada</strong>
+              <span>Consulta previa incluida en cada cita</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="booking-form reveal">
+        <h3>Solicitar cita</h3>
+        <div id="bookingFormWrap">
+          <div class="form-group">
+            <label>Tu nombre</label>
+            <input type="text" id="f-name" placeholder="María García" autocomplete="name" />
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>WhatsApp</label>
+              <input type="tel" id="f-phone" placeholder="+593 99 000 0000" autocomplete="tel" />
+            </div>
+            <div class="form-group">
+              <label>Servicio</label>
+              <select id="f-service">
+                <option value="">Seleccionar…</option>
+                <option>Corte & Estilo</option>
+                <option>Coloración / Mechas</option>
+                <option>Manicure & Pedicure</option>
+                <option>Keratina & Botox Capilar</option>
+                <option>Maquillaje Profesional</option>
+                <option>Ritual de Spa</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Fecha preferida</label>
+              <input type="date" id="f-date" />
+            </div>
+            <div class="form-group">
+              <label>Hora preferida</label>
+              <select id="f-time">
+                <option value="">Seleccionar…</option>
+                <option>09:00 AM</option>
+                <option>10:00 AM</option>
+                <option>11:00 AM</option>
+                <option>12:00 PM</option>
+                <option>02:00 PM</option>
+                <option>03:00 PM</option>
+                <option>04:00 PM</option>
+                <option>05:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Mensaje adicional (opcional)</label>
+            <textarea id="f-message" placeholder="Cuéntanos qué tienes en mente…"></textarea>
+          </div>
+          <button class="btn-whatsapp" onclick="sendToWhatsApp()">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enviar por WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Real Women <span>Beauty</span></div>
+        <p>Un espacio donde cada mujer descubre su mejor versión. Belleza auténtica, resultados extraordinarios.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/realwomen.ec" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/realwomen.ec/" target="_blank" class="social-btn" aria-label="Facebook">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="TikTok">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.62a8.16 8.16 0 004.77 1.52V7.7a4.85 4.85 0 01-1-.01z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#services">Corte & Estilo</a></li>
+          <li><a href="#services">Coloración</a></li>
+          <li><a href="#services">Manicure & Pedicure</a></li>
+          <li><a href="#services">Keratina</a></li>
+          <li><a href="#services">Maquillaje</a></li>
+          <li><a href="#services">Spa</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Nosotras</h4>
+        <ul>
+          <li><a href="#about">Nuestra historia</a></li>
+          <li><a href="#gallery">Galería</a></li>
+          <li><a href="#testimonials">Testimonios</a></li>
+          <li><a href="#booking">Reservar cita</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <address>
+          Quito, Ecuador · Batán Alto<br>
+          Lunes–Sábado<br>
+          9:00 AM – 7:00 PM<br><br>
+          <a href="tel:+593998944411" style="color:rgba(255,255,255,0.55)">+593 99 894 4411</a><br>
+          <a href="mailto:realwomenec@gmail.com" style="color:rgba(255,255,255,0.55)">realwomenec@gmail.com</a><br>
+          <a href="https://instagram.com/realwomen.ec" target="_blank" style="color:rgba(255,255,255,0.55)">@realwomen.ec</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 Real Women Beauty Lounge · Quito, Ecuador</span>
+      <span>Todos los derechos reservados</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     FLOATING BUTTONS
+════════════════════════════════════════════ -->
+<a href="https://wa.me/593998944411" id="float-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<a href="#booking" id="float-book">Reservar cita</a>
+
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════ -->
+<script>
+  /* ── Navbar scroll ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* ── Mobile drawer ── */
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const navDrawer    = document.getElementById('navDrawer');
+  const drawerClose  = document.getElementById('drawerClose');
+
+  hamburgerBtn.addEventListener('click', () => navDrawer.classList.add('open'));
+  drawerClose.addEventListener('click', closeDrawer);
+  navDrawer.addEventListener('click', e => { if (e.target === navDrawer) closeDrawer(); });
+
+  function closeDrawer() { navDrawer.classList.remove('open'); }
+
+  /* ── Scroll reveal ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  /* ── Carousel ── */
+  const track   = document.getElementById('carouselTrack');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const cardW   = () => track.querySelector('.testimonial-card')?.offsetWidth + 24 || 384;
+
+  nextBtn.addEventListener('click', () => track.scrollBy({ left:  cardW(), behavior: 'smooth' }));
+  prevBtn.addEventListener('click', () => track.scrollBy({ left: -cardW(), behavior: 'smooth' }));
+
+  /* Drag to scroll */
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', e => {
+    isDown = true; track.classList.add('active');
+    startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
+  });
+  track.addEventListener('mouseleave', () => { isDown = false; });
+  track.addEventListener('mouseup',    () => { isDown = false; });
+  track.addEventListener('mousemove',  e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x  = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    track.scrollLeft = scrollLeft - walk;
+  });
+
+  /* ── Booking helper ── */
+  function scrollToBooking() {
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  /* ── WhatsApp form ── */
+  function sendToWhatsApp() {
+    const name    = document.getElementById('f-name').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const service = document.getElementById('f-service').value;
+    const date    = document.getElementById('f-date').value;
+    const time    = document.getElementById('f-time').value;
+    const msg     = document.getElementById('f-message').value.trim();
+
+    if (!name || !phone || !service) {
+      alert('Por favor completa tu nombre, teléfono y el servicio que deseas.');
+      return;
+    }
+
+    const text = encodeURIComponent(
+      `¡Hola Real Women Beauty Lounge! 👋\n\n` +
+      `Quisiera reservar una cita:\n\n` +
+      `👤 Nombre: ${name}\n` +
+      `📱 WhatsApp: ${phone}\n` +
+      `💅 Servicio: ${service}\n` +
+      (date ? `📅 Fecha: ${date}\n` : '') +
+      (time ? `🕐 Hora: ${time}\n` : '') +
+      (msg  ? `\n💬 Mensaje: ${msg}\n` : '') +
+      `\n¡Gracias! 🌸`
+    );
+
+    window.open(`https://wa.me/593998944411?text=${text}`, '_blank');
+  }
+</script>
+
+</body>
+</html>
